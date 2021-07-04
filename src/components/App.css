@@ -1,0 +1,4 @@
+.file-icon:hover p{
+    text-decoration: underline;
+    cursor: pointer;
+}
