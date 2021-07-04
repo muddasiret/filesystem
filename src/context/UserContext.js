@@ -53,7 +53,8 @@ export {
   loginUser,
   signOut,
   getFiles,
-  addUser
+  addUser,
+  downloadFile
 };
 
 // ###########################################################
@@ -172,6 +173,25 @@ function addUser(name, pwd, files) {
     .then(function (response) {
       console.log(response);
       alert("User added")
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
+}
+
+function downloadFile(file) {
+  let token = localStorage.getItem("id_token");
+  let axiosConfig = {
+    headers: {
+      "x-auth-token": token
+    }
+  };
+  // let postData={
+  //   "filename_download": file
+  // }
+  axios.get(BASE_URL + "/download_test?filename="+file,axiosConfig)
+    .then(function (response) {
+      console.log(response);
     })
     .catch(function (error) {
       console.log(error);

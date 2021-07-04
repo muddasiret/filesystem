@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Box, Grid } from "@material-ui/core";
-import { getFiles } from "../../context/UserContext";
+import { downloadFile, getFiles } from "../../context/UserContext";
 
 export default function Dashboard(props) {
   var [files, setFiles] = useState([]);
@@ -11,7 +11,7 @@ export default function Dashboard(props) {
 
   const folderItem = (file) => {
     return (
-      <Box className="file-icon" style={{ margin: 20, width: "15%", textAlign: "center" }}>
+      <Box onClick={()=>downloadFile(file)} className="file-icon" style={{ margin: 20, width: "15%", textAlign: "center" }}>
         <img
           alt={file}
           style={{ cursor: "pointer", height: 80 }}
